@@ -44,3 +44,16 @@ const posts = [
 ];
 
 module.exports = posts;
+
+const express = require('express');
+const app = express();
+const postsRouter = require('./routers/posts');
+
+app.use(express.json());
+
+app.use('/posts', postsRouter);
+
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server in esecuzione su http://localhost:${port}`);
+});
